@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         menuSetting= menu.findItem(R.id.action_settings);
+        String id = Global.getState(this, "dic_type");
+
+        if (id != null)
+            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
 
         return true;
     }
@@ -69,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int id= item.getItemId();
+        Global.saveState(this, "dic_type", String.valueOf(id));
 
         if(id==R.id.action_tr_fa){
             menuSetting.setIcon(getDrawable(R.mipmap.ic_tr_fa));

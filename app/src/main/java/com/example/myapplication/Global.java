@@ -12,8 +12,9 @@ public class Global {
         editor.commit();
     }
 
-    public static void getState(){
-
+    public static String getState(Activity activity, String key) {
+        SharedPreferences sharedPreferences = activity.getPreferences(Context.MODE_PRIVATE);
+        return sharedPreferences.getString(key, null);
     }
 
 }
